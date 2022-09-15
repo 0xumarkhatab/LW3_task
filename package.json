@@ -13,6 +13,7 @@
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@rainbow-me/rainbowkit": "0.4.5",
+    "alchemy-sdk": "^2.0.4",
     "api": "^4.5.2",
     "ethers": "5.7.0",
     "framer-motion": "^7.3.2",

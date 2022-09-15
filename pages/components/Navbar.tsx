@@ -47,7 +47,7 @@ function Navbar() {
         boxShadow="1px 1px 1px 1px grey"
         w="100vw"
         zIndex={"10"}
-        
+
       >
         {/* Cons */}
 
@@ -58,8 +58,7 @@ function Navbar() {
             <Image
               pl={["10", "10", "20"]}
               src="./learnweb3.png"
-              width={"25"}
-              height="8"
+              width={"40"}
               objectFit={"contain"}
             />
           </a>
