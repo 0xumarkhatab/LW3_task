@@ -15,7 +15,6 @@ import {
   GridItem,
   Image,
 } from "@chakra-ui/react";
-import ShowCollection from "./components/ShowCollection"
 import { Alchemy, Network } from "alchemy-sdk";
 
 //  Wallet Connection
@@ -27,8 +26,21 @@ import React, { useState, useEffect } from "react";
 // Checking if the Wallet is Connected or Not
 import { useAccount, useConnect, useDisconnect } from "wagmi";
 
+import ShowCollection from "./components/ShowCollection";
+
+/**    Hardcoded Conytract Address Values for LW3 and Buildspace Collection to filter results with*/
 const lw3ContractAddress = "0x1ed25648382c2e6da067313e5dacb4f138bc8b33";
 const buildSpaceContractAddress = "0x322a88a26c23d45c7887711cadf055275701738e";
+
+// Global variable to make request with
+const alchemy = new Alchemy({
+  // hardcoded my API key ,
+  //can store it in .env file but right now , i don't think there's an issue with this
+
+  apiKey: "Ye6S888IuNTfAGGPQf2C_ZRvXJD9YQdQ",
+
+  network: Network.MATIC_MAINNET,
+});
 
 function Dashboard() {
   //  Wallet Connection status Hook
@@ -37,37 +49,31 @@ function Dashboard() {
   const [isWalletConnected, setIsWalletConnected] = useState(false);
   const [owner, setOwner] = useState(address); // dummy address that has some LW3 NFTs : 0xb4e5BCdE9b9e1F6f7fAF766cAfAfCdf2491cd9Ea
   // Array for Holding BAYC NFT Collection
-  console.log("the connected address is ",address);
   const [lw3Collection, setLw3Collection] = useState(null);
   const [buildSpaceCollection, setBuildSpaceCollection] = useState(null);
 
   async function fetchLw3NFTs() {
+    //    As `getNftsForOwner` accepts only an Array of addresses
+    //    converting an string into an array of one string element
     let addresses = [];
     addresses.push(lw3ContractAddress);
-    const alchemy = new Alchemy({
-      apiKey: "Ye6S888IuNTfAGGPQf2C_ZRvXJD9YQdQ",
-      network: Network.MATIC_MAINNET,
-    });
 
     let nfts = await alchemy.nft.getNftsForOwner(address, {
       contractAddresses: addresses,
     });
-    console.log("lw3 nfts are ", nfts);
 
     setLw3Collection(nfts?.ownedNfts);
   }
   async function fetchBuildspaceNFTs() {
+    //    As `getNftsForOwner` accepts only an Array of addresses
+    //    converting an string into an array of one string element
+
     let addresses = [];
     addresses.push(buildSpaceContractAddress);
-    const alchemy = new Alchemy({
-      apiKey: "Ye6S888IuNTfAGGPQf2C_ZRvXJD9YQdQ",
-      network: Network.MATIC_MAINNET,
-    });
 
     let nfts = await alchemy.nft.getNftsForOwner(address, {
       contractAddresses: addresses,
     });
-    console.log("buildspace nfts are ", nfts);
 
     setBuildSpaceCollection(nfts?.ownedNfts);
   }
@@ -189,6 +195,5 @@ function Dashboard() {
     </Box>
   );
 }
-
 
 export default Dashboard;
