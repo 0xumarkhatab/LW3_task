@@ -13,7 +13,7 @@ import Navbar from "./components/Navbar";
  * Next JS - for setting up entire app
  * Wagmi / Rainbow Wallet -  Connecting the Different Wallets
  * Chakra UI - Using Clean Composeable React Components to keep code Clean
- * Open Sea API - Fetching BAYC Collection
+ * Alchemy SDK
  *
  */
 
