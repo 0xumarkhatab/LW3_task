@@ -47,7 +47,6 @@ function Dashboard() {
   const { isConnected, isDisconnected, address } = useAccount();
   //   //  Wallet Connection status Component State Variables
   const [isWalletConnected, setIsWalletConnected] = useState(false);
-  const [owner, setOwner] = useState(address); // dummy address that has some LW3 NFTs : 0xb4e5BCdE9b9e1F6f7fAF766cAfAfCdf2491cd9Ea
   // Array for Holding BAYC NFT Collection
   const [lw3Collection, setLw3Collection] = useState(null);
   const [buildSpaceCollection, setBuildSpaceCollection] = useState(null);
@@ -57,7 +56,7 @@ function Dashboard() {
     //    converting an string into an array of one string element
     let addresses = [];
     addresses.push(lw3ContractAddress);
-
+// dummy address that has some LW3 NFTs : 0xb4e5BCdE9b9e1F6f7fAF766cAfAfCdf2491cd9Ea
     let nfts = await alchemy.nft.getNftsForOwner(address, {
       contractAddresses: addresses,
     });
@@ -85,8 +84,6 @@ function Dashboard() {
     if (isConnected == true) {
       fetchLw3NFTs();
       fetchBuildspaceNFTs();
-      setOwner(address);
-
       setIsWalletConnected(true);
     }
     if (isDisconnected == true) setIsWalletConnected(false);
@@ -106,6 +103,7 @@ function Dashboard() {
         pt="20"
         width="95%"
         justify={"space-between"}
+        pb="5"
       >
         {/* 
             Responsive Fonts
@@ -127,11 +125,11 @@ function Dashboard() {
             width={["max-content", "100%"]}
             fontSize={["3vw", "10px", "12px", "14px"]}
           >
-            <ConnectButton />
+            <ConnectButton  />
           </Box>
           <ButtonGroup variant="solid" spacing="5">
             <Button
-              width={["25vw", "100%"]}
+              width={["31vw", "100%"]}
               fontSize={["3vw", "10px", "12px", "14px"]}
               px="2"
             >

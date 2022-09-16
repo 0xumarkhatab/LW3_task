@@ -54,9 +54,11 @@ function ShowCollection({ collection, title }) {
           >
             <Image
               width={["50%", "100%", "100%"]}
+              height="20vh"
               key={"img of " + item.id}
               src={item.media[0].gateway}
               alt={"item" + item.id}
+              borderRadius="10px"
             />
           </a>
           <Heading
