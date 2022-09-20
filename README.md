@@ -23,6 +23,7 @@ This project simply displays the NFTs owned by an address from LearnWeb3Dao and 
 
     ✅ User opens your website
     ✅ User connects their Ethereum wallet
+    ✅ Change Network to Polygon Mainnet
     ✅ Website loads all LearnWeb3 and Buildspace NFTs owned by that address
     ✅ Website displays all the images of those NFTs
 
