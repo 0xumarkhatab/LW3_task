@@ -160,7 +160,7 @@ function Dashboard() {
           {/* Showing Customized Messages if Wallet is connected or not */}
           {!isWalletConnected
             ? "Your Wallet is Not Connected ! Connect your Polygon Wallet First"
-            : "My Minted NFTs"}
+            : ""}
 
           {/* If the NFT Collection is not Fetched Yet , Show Loading Screen */}
         </Text>
