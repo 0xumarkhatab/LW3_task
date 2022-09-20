@@ -23,16 +23,41 @@ import Navbar from "./components/Navbar";
  *        STARTED
  */
 
+ const Polygon = {
+  id: 137,
+  name: "Matic Mainnet",
+  network: "polygon",
+  nativeCurrency: {
+    decimals: 18,
+    name: "Matic",
+    symbol: "MATIC",
+  },
+  rpcUrls: {
+    default: " https://polygon-rpc.com",
+  },
+  blockExplorers: {
+    default: {
+      name: "polygonscan",
+      url: "https://polygonscan.com/",
+    },
+  },
+  testnet: false,
+};
+
 const { chains, provider } = configureChains(
-  [chain.mainnet],
+  [Polygon],
   [
-    jsonRpcProvider({ rpc: () => ({ http: "https://rpc.ankr.com/eth" }) }),
-    publicProvider(),
+    jsonRpcProvider({
+      rpc: (chain) => {
+        if (chain.id !== Polygon.id) return null;
+        return { http: chain.rpcUrls.default };
+      },
+    }),
   ]
 );
 
 const { connectors } = getDefaultWallets({
-  appName: "My RainbowKit App",
+  appName: "Lw3 Task ",
   chains,
 });
 
@@ -41,7 +66,6 @@ const wagmiClient = createClient({
   connectors,
   provider,
 });
-
 /**
  *   Wagmi and Rainbow Wallet Connection Setup things Boilerplate
  *
